@@ -1,0 +1,94 @@
+question3: Design a job searching and posting platform
+
+
+
+things:
+
+JobPlatform:
+    Data: name, url,
+    Behaviors: isAvaiable, release, check,recommend
+
+Company:
+    Data: name, size, addr, website,
+    Behaviors: post, hire, edit
+
+Job:
+    Data: name, company, salary, industry, position, require, valid
+    Behaviors: outOfTime, isSelected,
+
+Graduate:
+    Data: name, phone, resume,
+    Behaviors: search, compare apply, setGoal
+
+Goal:
+    Data:goalPosition, goalSalary, goalIndustry
+    Behaviors:
+
+
+Begin
+
+
+JobPlatform 58tongcheng
+company aa,bb,cc
+Graduate bob, cindy, duke,
+job[] developer, desinger, photographer
+Goal goal
+
+
+//Company posting part:
+    if(!58tongcheng.isAvailable)
+        break;
+    Else:
+        aa = new company(name, size, addr, website)
+        developer = new job(name, salary, industry, require)
+
+        while(58tongcheng.check == invalid){
+            developer = new job(name, aa, salary, industry, require)
+            aa.edit -> 58tongcheng, developer;
+        }
+        58tongcheng.add -> developer, job[i]
+        aa.post -> 58tongcheng, developer;
+
+        if(aa want to update job)
+            aa.edit(developer);
+            aa.post -> 58tongcheng, developer;
+        if(aa want to remove the job)
+            aa.edit;
+            developer.isValid = false;
+            58tongcheng.remove -> developer, job[i]
+    End
+//Graduate Searching part
+    if(!58tongcheng.isAvailable)
+        break;
+    Else:
+        bob = new graduate(name, );
+        bob.setGoal(goal)
+        goal = new goal(goalSalary, goalPosition, goalIndustry)
+        bob.search -> goal, job[i], 58tongcheng;
+
+        while(job[i]!=null){
+            If(goalIndustry == job[i].industry)
+                58tongcheng.recommend -> bob, job[i], aa
+                If(goalPosition == job[i].position)
+                    58tongcheng.recommend -> bob, job[i], aa
+                    If(goalSalary >= job[i].salary)
+                        58tongcheng.recommend -> bob, job[i], aa
+                    Else
+                        58tongcheng.alert(No such a job in this salary, positon and industry)
+                Else
+                    58tongcheng.alert(No such a job in this positon and industry)
+            Else
+                58tongcheng.alert(No such a job in this industry)
+            i++
+        }
+
+        if(recommendation >= 2)
+            bob.compare -> recommendation[], bob: decision,
+
+        bob.apply -> decision, 58tongcheng
+        58tongcheng.connect -> bob, aa;
+        aa.hire(bob);
+
+        successfully~
+
+    End

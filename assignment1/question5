@@ -1,0 +1,80 @@
+question5: Design a course registration platform
+
+
+Things:
+
+
+
+registrationPlatform
+    Data: name, url,
+    Behaviors: add, check
+
+student
+    Data: name, studentId, takeCourse[], credit
+    Behaviors: view, register
+
+staff
+    Data: Name, staffId, subject, teachingcourse[]
+    Behaviors: update，
+
+course
+    Data: name, courseId, teacher, subject, college, time, maxSeat, restSeat
+    Behaviors:
+
+
+
+
+
+
+
+
+registrationPlatform Blackboard
+student adam
+staff Morgan
+course[] c1,c2,c3;
+
+Begin:
+
+    if(!Blackboard.isAvailable){
+        return "ooops"
+    }
+    else{
+
+
+        while(course[i]!= null){
+            while(Morgan.teachingcourse[j] != null)
+                if(course[i].time != Morgan.teachingcourse[j])
+                    Morgan.update -> course[i], Blackboard;
+                    j++;
+                Else
+                    break;
+            if(!Blackboard.check(course[i]))
+                print incorrect
+                Morgan.edit -> course[i], Blackboard;
+            Else
+                Blackboard.add -> course[i], Blackboard;
+        }
+
+        if(course[i] == null)
+            Blackboard.alert(adam) couldn't register
+            adam.login
+
+            while(course[i]!=null)
+                adam.view -> Blackboard, course[i];
+                while(adam.takeCourse[j] != null){
+                    if(course[i].time == Morgan.teachingcourse[j]){
+                        break;// time collision
+                        if(course[i].restSeat <= 0){
+                            break;//no seats
+                            if(adam.credit >= 8){
+                                break;//no more than 2course per term
+                            }
+                        }
+                    }
+                    else{
+                        adam.register -> course[i], Blackboard, adam.takeCourse[]
+                    }
+                    j++;
+                }
+
+End
