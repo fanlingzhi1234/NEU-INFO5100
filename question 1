@@ -1,0 +1,77 @@
+Problem: Order a hotle online before a trip
+
+
+Thing (Object)/Entity:
+    Information (Data)/(State):
+    Services (Behaviors)/Actions
+
+Things:
+
+
+    Consumer(Internet Shopper):
+        Data: Name, Address, Phone,
+        Behaviors:buy, search, reviews, compare, return,cancle
+
+    Internet
+        Data : Amazon, BestBuy, Alibaba, Google, website2,
+             : Group of Websites (Collection of Websites)
+        Behaviors : searchForHotleWebsites
+
+    HotelWebsite
+        Data: URL, Hotel[] hotels, BankAccount
+        Behaviors:search, sort, display, compare, placeTheOrder
+
+    Hotel
+        Data: Name, Address, Phone, Price, location，size, brand, year, availbleDate
+        Behaviors:
+
+    Trip
+        Data: Start time, Ending time, Destination,
+        Behaviors:
+
+    Order
+        Data: Consumer, hotel,
+        Behaviors:
+
+
+
+OrderHotelOnInternet
+
+    Consumer rexus,
+    Internet internet,
+    HotelWebsite booking,
+    Hotel hilton,
+    CreditCard card,
+    CreditCardCompany visa,
+    ShoppingConfiremation response
+
+    If Internet.isAvaiable
+        Rexus.searchInInternet -> internet, question: colleciton of HotelWebsite
+        //Rexus.findDesirableWebsiteInFirstPage -> Collection of Websites:website
+        pageNumber = 1;
+        Loop
+            if rexus.findsNoPages
+                break
+            end,
+            rexus.findDesirableWebsiteInFirstPage ->internet,question, page Number:website
+            booking = website;
+            If booking is not empty
+                break
+            else
+                pageNumber = pageNumber +1
+            end
+        End
+        booking = website
+        If booking is not empty or booking!=null
+            booking.searchForHotel -> priceRange, Location, brand, availableDate:Colletion of Hotel
+            Hilton = hotel
+            rexus.orderHotel -> Hilton, creditCard, address, booking;
+ShoppingConfirmation
+            response = ShoppingConfirmation
+        else
+            rexus.cantOrderHotel
+    else
+        rexus.browseInternetAfterAWhileBack
+
+
+    End

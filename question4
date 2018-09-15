@@ -1,0 +1,65 @@
+question4:Order food in a restaurant
+
+
+Thing (Object)/Entity:
+    Information (Data)/(State):
+    Services (Behaviors)/Actions
+
+
+Things:
+    customre:
+        Data: name, creditCard,
+        Behaviors: reviewMenu, isVegetarian, waitInLine
+
+    menu:
+        Data: name, price, tag, size,
+        Behaviors:
+
+    order:
+        Data: totalprice, time, collection of foods
+        Behaviors: correct, check out, remove,
+
+    restaurant:
+        Data: name, addr, number, waitlist
+        Behaviors: isOpen, makeFood
+
+
+
+Begin:
+
+
+Customer amy,
+Food bigmac, cola, salad,
+Restaurant burgerking
+Menu[] menu
+Order order
+
+If restaurant.isOpen
+    If(restaurant.waitlist !=null)
+        amy.waitInLine
+    else
+        amy.onSeat
+    menu = new menu(vegeMenu, foodMenu, drinkMenu)
+
+    LOOP:
+    int i=0
+    order = new order
+    while(menu){
+        menu[i].review
+        If(amy.want.avaliable)
+            order.add(amy.want)
+        if(amy.isVegetarian)
+            break;
+        i++
+    }
+    End Loop
+
+    Order.correct -> amy, menu, order,
+    if(!order.correct)
+        order.remove
+    else
+        order.checkout -> amy, order, totalprice
+        amy.pay -> order, totalprice, CreditCard
+    burgerking.makefood -> order, food
+
+End

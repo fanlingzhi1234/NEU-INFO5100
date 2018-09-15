@@ -1,0 +1,55 @@
+question2: Design an app for calling taxis(e.g.Uber)
+
+Things：
+
+Developer
+    Data:name, skill, language,
+    Behaviors：ask, design
+
+Customer：
+    Data: name, location, destination, phone, creditscore, money, crequire
+    Behaviors：answer，placeOrder
+
+application
+    Data: name, version, component，function
+    Behaviors：update，
+
+Taxidriver:
+    Data: name，location, phone, creditscore, drequire
+    Behaviors: answer, login，takeOrder,
+
+require
+    Data: name, text, priority
+    Behaviors: isValuable, convert;
+
+
+
+Developer tom;
+customer adam;
+application uber;
+Taxidriver driver;
+Require crequire, drequire;
+Function function
+version v1, v2
+
+    tom.askRequire -> uber, adam, driver : answer
+    customer.answer -> tom, uber, crequire
+    driver.answer -> tom, uber, drequire
+
+    if(crequire && drequire == null)
+        break;
+    else
+        if(require.isValuable == false)
+            tom.askRequire others
+        else
+            tom.design-> uber, crequire, drequire:convert
+            crequire.convert -> cfunction, uber, tom
+            drequire.convert -> dfunction, uber, tom
+            tom.develop -> uber, cfunction, dfunction,
+            uber = new calling taxi application
+            v2 = new version()
+            uber.update v2.
+        End
+    End
+
+    
