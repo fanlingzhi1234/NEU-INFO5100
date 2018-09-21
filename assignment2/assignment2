@@ -160,8 +160,8 @@ public class assignment2 {
      write your understanding here.
 
 
-     The wrong line is 170, the variable temp only points to the same memory which stored Employee x, so it can not change the result;
-     To correct that, you must add a line which declare a new memory space "Employee temp = new Employee;" before line 171;
+     The wrong line is 179, the variable temp only points to the same memory which stored Employee x, so it can not change the result;
+     To correct that, you must add a line which declare a new memory space "Employee temp = new Employee;" before line 179;
     */
     public static void main(String[] args) {
         Employee a = new Employee("Jenny", 20, Gender.FEMALE, 2000);
