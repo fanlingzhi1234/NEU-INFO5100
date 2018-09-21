@@ -1,10 +1,6 @@
 
-/**
- * Assignment for your lecture 2. Please finish all the questions under 'Assignment'
- * Please try to think the extra credit question.
- * The deadline of this assignment is 09/21/2018 23:59 PST.
- * Please feel free to contact Amanda and Zane for any questions.
- */
+import java.util.ArrayList;
+import java.util.List;
 
 class Employee {
     String name;
@@ -36,7 +32,7 @@ class Employee {
 
     public double raiseSalary(double salary){
         this.salary = tripleSalary(salary);
-        system.out.println("Your salary has been raised triple;")
+        System.out.println("Your salary has been raised triple;");
     }
 }
 
@@ -44,9 +40,19 @@ enum Gender {
     MALE,
     FEMALE;
 }
+public class assignment2 {
+
+/**
+ * Assignment for your lecture 2. Please finish all the questions under 'Assignment'
+ * Please try to think the extra credit question.
+ * The deadline of this assignment is 09/21/2018 23:59 PST.
+ * Please feel free to contact Amanda and Zane for any questions.
+ */
 
 
-public class Assignment2 {
+
+
+
     // Assignment
 
     /**
@@ -55,15 +61,16 @@ public class Assignment2 {
      * If the salary is more than 8900, the Social Security Tax is 6.2% of 106,800.
      */
     public double socialSecurityTax(Employee employee) {
-        float tax = 0;
+        double tax = 0;
         if(employee.salary <= 8900){
-            tax = 0.062 * employee.salary;
+            tax = (double)0.062 * employee.salary;
         }
         else{
-            tax = 0.062 * 106800;
+            tax = (double)0.062 * 106800;
         }
-        double result = (double)tax;
-        system.out.println(result);
+        System.out.println(tax);
+        return tax;
+        
 
     }
 
@@ -74,7 +81,7 @@ public class Assignment2 {
      * If the employee is between 50 and 60(exclusive), rate is 5% of salary; If the employee is above 60, rate is 6% of salary.
      */
     public double insuranceCoverage(Employee employee) {
-        float rate = 0;
+        double rate = 0;
         if(employee.age < 0){
             return -1.0;
         }
@@ -91,8 +98,9 @@ public class Assignment2 {
             rate = 0.06 * employee.salary;
         }
 
-        double result = (double)rate;
-        system.out.println(result);
+       
+        System.out.println(rate);
+        return rate;
     }
 
     /**
@@ -114,14 +122,14 @@ public class Assignment2 {
                 }
             }
         }
-        for(i=0; i<elist.size();i++){
-            system.out.println(elist[i].getName);
+        for(int i=0; i<elist.size();i++){
+            System.out.println(elist[i].getName);
         }
 
 
     }
 
-    \
+    
 
     /**
      * Write a method to raise an employee's salary to three times of his/her original salary.
@@ -130,7 +138,8 @@ public class Assignment2 {
      * Try to add a new method in Employee class: public void raiseSalary(double byPercent)
      */
     public void tripleSalary(Employee employee) {
-        employee.salary = (double) 3 * employee.salary;
+        if(employee.salary >= 0)
+        	employee.salary = (double) 3 * employee.salary;
 
     }
 
@@ -157,8 +166,7 @@ public class Assignment2 {
     public static void main(String[] args) {
         Employee a = new Employee("Jenny", 20, Gender.FEMALE, 2000);
         Employee b = new Employee("John", 30, Gender.MALE, 2500);
-        employee tom = new employee(tom, 11333);
-        employee bob = new employee(bob, 3333);
+        
 
         System.out.println("Before: a=" + a.getName());
         System.out.println("Before: b=" + b.getName());
@@ -173,3 +181,5 @@ public class Assignment2 {
         y = temp;
     }
 }
+
+
