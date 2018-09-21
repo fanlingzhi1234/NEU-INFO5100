@@ -1,6 +1,7 @@
-
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.xml.bind.annotation.XmlAccessOrder;
 
 class Employee {
     String name;
@@ -30,8 +31,8 @@ class Employee {
     	this.name = name;
     }
 
-    public double raiseSalary(double salary){
-        this.salary = tripleSalary(salary);
+    public void raiseSalary(double salary){
+        this.salary = salary;
         System.out.println("Your salary has been raised triple;");
     }
 }
@@ -68,7 +69,7 @@ public class assignment2 {
         else{
             tax = (double)0.062 * 106800;
         }
-        System.out.println(tax);
+        System.out.println(employee.name + ", Your tax is" + tax);
         return tax;
         
 
@@ -99,7 +100,7 @@ public class assignment2 {
         }
 
        
-        System.out.println(rate);
+        System.out.println(employee.name + ", Your rate is" + rate);
         return rate;
     }
 
@@ -117,13 +118,13 @@ public class assignment2 {
 
         for (int i = 0; i < elist.size(); ++i) {
             for (int j = i + 1; j < elist.size(); ++j) {
-                if (elist[i].salary > elist[j].salary) {
-                    swap(elist[i], elist[j]);
+                if (elist.get(i).salary > elist.get(i+1).salary) {
+                    swap(elist.get(i), elist.get(i+1));
                 }
             }
         }
         for(int i=0; i<elist.size();i++){
-            System.out.println(elist[i].getName);
+            System.out.println(elist.get(i).name);
         }
 
 
@@ -160,14 +161,19 @@ public class assignment2 {
      write your understanding here.
 
 
-     The wrong line is 179, the variable temp only points to the same memory which stored Employee x, so it can not change the result;
-     To correct that, you must add a line which declare a new memory space "Employee temp = new Employee;" before line 179;
+     The wrong line is 185, the variable temp only points to the same memory which stored Employee x, it's only a reference but not the object.so it can not change the result;
+     
     */
     public static void main(String[] args) {
         Employee a = new Employee("Jenny", 20, Gender.FEMALE, 2000);
         Employee b = new Employee("John", 30, Gender.MALE, 2500);
-        
-
+        Employee c = new Employee("Bob", 50, Gender.MALE, 3000);
+        //assignment2 as = new assignment2();
+        //as.socialSecurityTax(a);
+        //as.insuranceCoverage(a);
+        //as.sortSalary(a, b, c);
+        //as.tripleSalary(a);
+        //a.raiseSalary(a.salary);
         System.out.println("Before: a=" + a.getName());
         System.out.println("Before: b=" + b.getName());
         swap(a, b);
@@ -176,10 +182,8 @@ public class assignment2 {
     }
 
     public static void swap(Employee x, Employee y) {
-        Employee temp = x;
-        x = y;
+    	Employee temp = x;
+    	x = y;
         y = temp;
     }
 }
-
-
