@@ -10,27 +10,27 @@ public class Checkout extends java.lang.Object{
 	public float taxRate = DessertShoppe.taxRate;
 	
 	public Checkout() {
-		 list = new ArrayList<DessertItem>();
+		 this.list = new ArrayList<DessertItem>();
 	}
 	
 	public int numberOfItems() {
-		return list.size();
+		return this.list.size();
 	}
 	
 	public void enterItem(DessertItem item) {
-		list.add(item);
+		this.list.add(item);
 	}
 	
 	public void clear() {
-		list.clear();
+		this.list.clear();
 	}
 	
 	public int totalCost() {
 		int i=0;
 		int totalcost=0;
 		
-		while(i <list.size()) {
-			DessertItem a = list.get(i);
+		while(i < this.list.size()) {
+			DessertItem a = this.list.get(i);
 			totalcost += a.getCost();
 			i++;
 		}
@@ -44,7 +44,7 @@ public class Checkout extends java.lang.Object{
 			return (int)totaltax;
 		}
 		else 
-			throw new RuntimeException ("There is no cost");
+			throw new RuntimeException ("There is no goods!");
 		
 		
 	}
