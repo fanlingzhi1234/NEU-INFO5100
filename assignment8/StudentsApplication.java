@@ -6,39 +6,29 @@ package assignment8;
 */
 
 import java.awt.BorderLayout;
-import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.GridBagLayout;
-import java.awt.GridLayout;
-import java.awt.LayoutManager;
-import java.awt.Panel;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import javax.swing.BoxLayout;
+import javax.management.RuntimeErrorException;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 
-import org.omg.CORBA.PUBLIC_MEMBER;
-import org.omg.PortableServer.ID_ASSIGNMENT_POLICY_ID;
-
 public class StudentsApplication extends JFrame {
 
 	private JTable studentsTable;
-	private JPanel addPanel;
-	private JLabel addLabel;
+	private JPanel addNewStudentPanel;
 	private JButton add;
 	private JScrollPane jsp;
 
@@ -46,22 +36,22 @@ public class StudentsApplication extends JFrame {
 		StudentsTableModel model = new StudentsTableModel(students);
 		studentsTable = new JTable(model);
 		
-		JScrollPane jsp = new JScrollPane(studentsTable,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
+		jsp = new JScrollPane(studentsTable,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
                 JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		
-		JPanel addNewStudentPanel = new JPanel(new FlowLayout());
+		addNewStudentPanel = new JPanel(new FlowLayout());
 		
-		JTextField ID = new JTextField("ID:");
-		JTextField fn = new JTextField("FirstName:");
-		JTextField ln = new JTextField("LastName:");
-		JTextField gender = new JTextField("Gender: M/F");
+		JTextField ID = new JTextField("       ");
+		JTextField fn = new JTextField("            ");
+		JTextField ln = new JTextField("            ");
+		JTextField gender = new JTextField("M/F  ");
 		
 		JPanel p1 = new JPanel();
 		JPanel p2 = new JPanel();
 		JPanel p3 = new JPanel();
 		JPanel p4 = new JPanel();
 	
-		JLabel label1 = new JLabel("ID:");
+		JLabel label1 = new JLabel("ID:  ");
 		p1.add(label1);
 		p1.add(ID);
 		
@@ -97,6 +87,13 @@ public class StudentsApplication extends JFrame {
 					isMale = true;
 				else if(gender.getText() == "F")
 					isMale = false;
+				else {
+					throw new RuntimeErrorException(null, "wrong gender.");
+				}
+				ID.setText("");
+				fn.setText("");
+				ln.setText("");
+				gender.setText("");
 				
 				Student s = new Student(roll, firstname, lastname, isMale);
 				students.addStudent(s);
@@ -251,7 +248,7 @@ class StudentsTableModel implements TableModel {
 	}
 
 }
-
+// controller;
 class NewStudentPanel {
 	
 	
